@@ -57,16 +57,4 @@ public class Account {
 
     public void setPassword(String password) { this.password = password; }
 
-/*
-    public void addFriend(String nameFriend) {
-        int numFriends = this.getFriends().length;
-        numFriends = numFriends++;
-        String[] listFriends = new String[numFriends];
-        for(int i = 0; i < this.getFriends().length; i++) {
-            listFriends[i] = this.getFriends()[i];
-        }
-        listFriends[this.getFriends().length] = nameFriend;
-    }
-*/
-
 }

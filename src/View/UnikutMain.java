@@ -54,7 +54,6 @@ public class UnikutMain {
                                 System.out.print("Digite seu novo nome: ");
                                 String newName = read.next();
                                 System.out.println("-----------------------");
-
                                 AccountController.updateName(newName, loginSession, database);
                             }
                             case 2 -> {
@@ -62,7 +61,6 @@ public class UnikutMain {
                                 System.out.println("Digite sua nova senha: ");
                                 String newPassword = read.next();
                                 System.out.println("--------------------------");
-
                                 AccountController.updatePassword(newPassword, loginSession, database);
                             }
                             case 3 -> {
@@ -115,10 +113,12 @@ public class UnikutMain {
                     Account user = new Account(login, name, password);
                     AccountController.createNewAccount(user, database);
                 } else if (selected == 3) {
+                    System.out.println(" ");
                     System.out.println("Até a próxima!");
                     System.out.println("*** Sessão encerrada! ***");
                     break;
                 } else {
+                    System.out.println(" ");
                     System.out.println("Opção incorreta, digite novamente.");
                 }
 

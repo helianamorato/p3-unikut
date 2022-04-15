@@ -15,9 +15,9 @@ public class Interactions {
             String[] listInvite = new String[1];
             listInvite[0] = nameFriend;
             database.accounts[positionUser].setInvitations(listInvite);
+            System.out.println(" ");
             System.out.println("Solicitação de amizade enviada a "+nameFriend);
             System.out.println("Aguarde resposta para interagir");
-            System.out.println(" ");
             for (int i = 0; i < database.accounts.length; i++) {
                 if(Objects.equals(database.accounts[i].getLogin(), nameFriend)) {
                     indiceFriend = i;
@@ -43,9 +43,9 @@ public class Interactions {
             }
             listInvite[database.accounts[positionUser].getInvitations().length] = nameFriend;
             database.accounts[positionUser].setInvitations(listInvite);
+            System.out.println(" ");
             System.out.println("Solicitação de amizade enviada a " + nameFriend);
             System.out.println("Aguarde resposta para interagir");
-            System.out.println(" ");
             for (int i = 0; i < database.accounts.length; i++) {
                 if(Objects.equals(database.accounts[i].getLogin(), nameFriend)) {
                     indiceFriend = i;
@@ -79,6 +79,7 @@ public class Interactions {
                 }
             }
             database.accounts[positionUser].setFriends(listFriends);
+            System.out.println(" ");
             System.out.println(nameFriend+" foi aceito como amigo.");
             System.out.println("Agora vocês podem interagir! O que deseja fazer agora?");
             Menu.printMenuFriend();
@@ -116,6 +117,7 @@ public class Interactions {
             }
             listFriends[database.accounts[positionUser].getFriends().length] = nameFriend;
             database.accounts[positionUser].setFriends(listFriends);
+            System.out.println(" ");
             System.out.println(nameFriend+" foi aceito como amigo.");
             System.out.println("Agora vocês podem interagir! O que deseja fazer agora?");
             Menu.printMenuFriend();
@@ -172,7 +174,6 @@ public class Interactions {
             database.accounts[indiceFriend].setMessageList(listMessages);
             database.accounts[indiceFriend].setMessageWriters(listWriters);
             System.out.println("- Mensagem enviada a "+nameFriend+" -");
-            System.out.println(" ");
         } else {
             String[] listMessages = new String[database.accounts[indiceFriend].getMessageList().length + 1];
             String[] listWriters = new String[database.accounts[indiceFriend].getMessageWriters().length + 1];
@@ -185,7 +186,6 @@ public class Interactions {
             database.accounts[indiceFriend].setMessageList(listMessages);
             database.accounts[indiceFriend].setMessageWriters(listWriters);
             System.out.println("- Mensagem enviada a "+nameFriend+" -");
-            System.out.println(" ");
         }
     }
 }

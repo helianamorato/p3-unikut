@@ -20,6 +20,7 @@ public class Network {
             for (int i = 0; i < database.accounts[positionUser].getInvited().length; i++) {
                 if (Objects.equals(database.accounts[positionUser].getInvited()[i], nameFriend)) {
                     System.out.println(nameFriend + " convidou você para serem amigos");
+                    System.out.println(" ");
                     cont = 1;
                     Menu.printMenuAcceptFriend();
                     int select = sc.nextInt();
@@ -45,6 +46,7 @@ public class Network {
                 if (Objects.equals(database.accounts[positionUser].getInvitations()[j], nameFriend)) {
                     System.out.println("Status de amizade: PENDENTE");
                     System.out.println("Aguarde resposta");
+                    System.out.println(" ");
                     cont = 1;
                 }
             }
@@ -60,6 +62,7 @@ public class Network {
         int cont = 0;
         if (database.accounts[positionUser].getFriends() == null) {
             System.out.println("Vocês não são amigos");
+            System.out.println(" ");
             Menu.printMenuNoFriend();
             int select = sc.nextInt();
             if (select == 1) {
@@ -69,6 +72,7 @@ public class Network {
             for (int k = 0; k < database.accounts[positionUser].getFriends().length; k++) {
                 if (Objects.equals(database.accounts[positionUser].getFriends()[k], nameFriend)) {
                     System.out.println("Status de amizade: AMIGOS");
+                    System.out.println(" ");
                     Menu.printMenuFriend();
                     int selected = sc.nextInt();
                     if(selected == 1) {
@@ -79,6 +83,7 @@ public class Network {
             }
             if (cont < 1) {
                 System.out.println("Vocês não são amigos");
+                System.out.println(" ");
                 Menu.printMenuNoFriend();
                 int select = sc.nextInt();
                 if (select == 1) {
@@ -91,6 +96,7 @@ public class Network {
 
     public static void verifyPendingInv(int positionUser, Database database) {
         Scanner sc = new Scanner(System.in);
+        System.out.println(" ");
         System.out.println("Usuários que você solicitou amizade:");
         int cont = 0;
         if (database.accounts[positionUser].getInvitations() == null) {
@@ -136,6 +142,7 @@ public class Network {
         System.out.println("---------------");
     }
     public static void listingFriends(int positionUser, Database database) {
+        System.out.println(" ");
         System.out.println("--- Seus amigos ---");
         if (database.accounts[positionUser].getFriends() == null) {
             System.out.println("Você ainda não tem amigos adicionados");
@@ -148,12 +155,13 @@ public class Network {
     }
     public static void listingMessages(int positionUser, Database database) {
         if (database.accounts[positionUser].getMessageList() == null) {
+            System.out.println(" ");
             System.out.println("Você não tem nenhuma mensagem");
         } else {
             for (int i = 0; i < database.accounts[positionUser].getMessageList().length; i++) {
-                System.out.println("* Mensagem "+(i+1)+" *");
+                System.out.println("** Mensagem "+(i+1)+" **");
                 System.out.println(database.accounts[positionUser].getMessageList()[i]);
-                System.out.println("- Enviada por: "+database.accounts[positionUser].getMessageWriters()[i]);
+                System.out.println("-- Enviada por: "+database.accounts[positionUser].getMessageWriters()[i]);
                 System.out.println("---------------------------------------------");
             }
         }
