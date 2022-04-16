@@ -7,22 +7,9 @@ import Interfaces.IAccountController;
 import java.util.Objects;
 
 public class AccountController implements IAccountController {
-    public static Account getAccount(String login, Database database) {
-        if(database.isEmpty()){
-            return null;
-        }else{
-            for(int i = 0; i < database.accounts.length; i++) {
-                if(Objects.equals(database.accounts[i].getLogin(), login)){
-                    return database.accounts[i];
-                }
-            }
-        }
-        return null;
-    }
 
     public static void updateName(String name, String login, Database database) {
-        if(database.isEmpty()){
-        }else{
+        if(!database.isEmpty()){
             for(int i = 0; i < database.accounts.length; i++) {
                 if(Objects.equals(database.accounts[i].getLogin(), login)){
                     database.accounts[i].setName(name);
@@ -44,9 +31,7 @@ public class AccountController implements IAccountController {
             System.out.println("----------------------");
         } else {
             Account[] accountsTemplate = new Account[database.accounts.length + 1];
-            for (int i = 0; i < database.accounts.length; i++){
-                accountsTemplate[i] = database.accounts[i];
-            }
+            System.arraycopy(database.accounts, 0, accountsTemplate, 0, database.accounts.length);
             accountsTemplate[database.accounts.length] = account;
             database.setAccounts(accountsTemplate);
             System.out.println("----------------------");

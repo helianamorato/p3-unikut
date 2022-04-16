@@ -1,6 +1,5 @@
 package Model;
 
-import java.util.Scanner;
 public class Account {
     protected String login;
     protected String name;
@@ -46,8 +45,6 @@ public class Account {
     }
 
     public String getLogin() { return this.login; }
-
-    public void setLogin(String login) { this.login = this.login; }
 
     public String getName() { return this.name; }
 

@@ -2,8 +2,6 @@ package Database;
 
 import Model.Account;
 
-import java.util.Objects;
-
 public class Database {
     public Account[] accounts;
 
@@ -16,9 +14,9 @@ public class Database {
     }
 
     public boolean isEmpty(){
-        if(this.accounts == null){
+        if(this.accounts == null) {
             return true;
-        }else{
+        } else {
             return false;
         }
     }

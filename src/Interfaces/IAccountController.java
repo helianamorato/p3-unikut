@@ -13,7 +13,6 @@ public interface IAccountController {
     }
 
     static void createNewAccount(Account account, Database database) {
-
     }
 
     static Account updatePassword(String password, String login, Database database) {

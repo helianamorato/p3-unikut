@@ -1,13 +1,13 @@
 package View;
 
 import java.util.Scanner;
-
 import Controller.AccountController;
 import Database.Database;
 import Model.Account;
-import Model.Network;
+import Services.Network;
 import useCases.EmailAlreadyExistsUseCase;
 import useCases.VerifyPasswordEqualsUseCase;
+
 
 public class UnikutMain {
     public static void main(String[] args) {
@@ -37,7 +37,7 @@ public class UnikutMain {
                         System.out.println("-------------------");
                         System.out.print("Digite sua senha: ");
                         String password = read.next();
-                        verifyPass = VerifyPasswordEqualsUseCase.verify(login, password, database, verifyLogin);
+                        verifyPass = VerifyPasswordEqualsUseCase.verify(password, database, verifyLogin);
                     } while (!verifyPass);
 
                     System.out.println(" ");
@@ -64,25 +64,27 @@ public class UnikutMain {
                                 AccountController.updatePassword(newPassword, loginSession, database);
                             }
                             case 3 -> {
-                                boolean verify = true;
+                                boolean verify;
                                 do {
                                     System.out.println("---------------------");
                                     System.out.println("Digite o login do usuário a ser encontrado: ");
                                     nameFriend = read.next();
-                                    verify = EmailAlreadyExistsUseCase.verifyUser(nameFriend, database);
-                                    Network.verifyInvited(verifyLogin, nameFriend, database);
+                                    verify = EmailAlreadyExistsUseCase.verifyUserFriend(login, nameFriend, database);
+                                    if(verify) {
+                                        Network.verifyInvited(verifyLogin, nameFriend, database);
+                                    }
                                     System.out.println(" ");
                                 } while (!verify);
                             }
-                            case 4 -> {
+                            case 4 ->
                                 Network.listingFriends(verifyLogin, database);
-                            }
-                            case 5 -> {
+
+                            case 5 ->
                                 Network.verifyPendingInv(verifyLogin, database);
-                            }
-                            case 6 -> {
+
+                            case 6 ->
                                 Network.listingMessages(verifyLogin, database);
-                            }
+
                             case 7 -> session = false;
                         }
                     } while (session);
